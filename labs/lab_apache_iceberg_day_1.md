@@ -1,4 +1,4 @@
-# 🧊 Apache Iceberg — Day 1
+# 🧊 Apache Iceberg — Lab Day 1
 
 > This notebook demonstrates key functionalities of Apache Iceberg using Trino, including snapshotting, time travel, partition pruning, and file-level metadata exploration.  
 > We learned how to create tables, track snapshots, restore historical data, optimize queries through partitioning, and analyze file storage behavior in both partitioned and unpartitioned formats.
