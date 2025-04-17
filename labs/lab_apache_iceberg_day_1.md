@@ -193,7 +193,7 @@ FROM bootcamp."nba_player_seasons$files";
 | partitioned   | 12,869       | 619,376            |
 
 - Unpartitioned is 60% smaller → better compression.
-- **Why?** → Run-Length Encoding (RLE) is more effective on non-partitioned columnar files. If we sort the data we can get even more compression.
+- **Why?** → Run-Length Encoding (RLE) is more effective on non-partitioned columnar files. If we sort the data we can get even more compression (but is a expensive operation).
 
 ### 🤔 Conclusion
 
