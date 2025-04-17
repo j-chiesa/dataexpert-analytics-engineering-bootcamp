@@ -4,8 +4,6 @@
 
 ## 📊 Iceberg Architecture
 
----
-
 ### 🔂 Snapshots
 
 ![Snapshots](img/apache_iceberg_day_1_1.png)
