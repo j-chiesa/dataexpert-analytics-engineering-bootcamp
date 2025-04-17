@@ -1,9 +1,4 @@
-# 🧊 Apache Iceberg — Day 1
-
-> **Trino Cluster:** `eczachly`  
-> **Trino Catalog:** `academy`  
-> **Trino Schema:** `javierchiesa`
-
+# 🧊 Apache Iceberg — Day 
 ---
 
 ## 📸 1. Snapshots
