@@ -1,4 +1,4 @@
-# 🧊 Apache Iceberg - Day 1
+# 🧊 Apache Iceberg - Lecture Day 1
 
 > This lecture provides a conceptual overview of Apache Iceberg's architecture and key features such as snapshots, time travel, and partitioning. It explains why these concepts are critical for handling large-scale data efficiently and includes real-world examples from companies like Netflix and Facebook.
 
