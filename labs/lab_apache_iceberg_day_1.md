@@ -1,5 +1,4 @@
-# 🧊 Apache Iceberg — Day 
----
+# 🧊 Apache Iceberg — Day 1
 
 ## 📸 1. Snapshots
 
