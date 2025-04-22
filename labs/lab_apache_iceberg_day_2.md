@@ -6,7 +6,7 @@
 
 ---
 
-## ⚙️ Iceberg Compaction
+## ⚙️ 1. Iceberg Compaction
 
 ```sql
 CREATE TABLE javierchiesa.test_compaction (col BIGINT, name VARCHAR);
@@ -103,7 +103,7 @@ FROM javierchiesa."test_compaction$files";
 
 ---
 
-## 🛫 Data Movement: Iceberg → Snowflake
+## 🛫 2. Data Movement: Iceberg → Snowflake
 
 ### 🚀 Dynamic Apache Iceberg Tables
 
@@ -159,7 +159,7 @@ get_data_and_schema_from_trino('bootcamp.web_events')
 
 ---
 
-## ⏱️ Latency: Trino vs Snowflake
+## ⏱️ 3. Latency: Trino vs Snowflake
 
 - ❄️ **Snowflake** has significantly lower latency than Trino → better for dashboards
 - 🧮 Pre-aggregate in Trino if using it for BI tools
