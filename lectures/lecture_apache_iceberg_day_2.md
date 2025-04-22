@@ -5,10 +5,14 @@
 
 ## 🗄️ Agnostic Storage
 
+![Agnostic Storage](img/apache_iceberg_day_2_1.png)
+
 - Apache Iceberg is **file format agnostic** — it works with **Parquet**, **ORC**, and **Avro**.
     - **Parquet** is the industry standard.
 - Iceberg is **engine agnostic** — it supports read/write operations from **Trino**, **Spark**, **Flink**, **Python**, etc.
 - It is a **fully open-source** project.
+
+![Apache Iceberg Features](img/apache_iceberg_day_2_2.png)
 
 ---
 
@@ -16,10 +20,14 @@
 
 ### 📅 Current Analytical Architecture
 
+![Current Analytical Architecture](img/apache_iceberg_day_2_3.png)
+
 - **Production Database Layer**: Daily snapshots go through ETL and land in the data lake partitioned by date.
 - **Application Layer**: Applications send events to a queue (e.g., Kafka, Scribe). Data is dumped daily into the data lake. For large volumes, hourly partitions are created and later combined into daily ones.
 
 ### 🔮 Future Analytical Architecture
+
+![Future Analytical Architecture](img/apache_iceberg_day_2_4.png)
 
 - **Production Database Layer**: No more daily snapshots. **Change Data Capture (CDC)** sends real-time changes to an event queue, then ingested directly into Iceberg.
 - **Application Layer**: Remains unchanged.
@@ -50,12 +58,16 @@
 
 ### 🌀 Lambda Architecture
 
+![Lambda Architecture](img/apache_iceberg_day_2_5.png)
+
 - Two codebases: one for streaming, one for batch.
 - **Streaming pipeline** creates small files and is fast but less accurate.
 - **Batch pipeline** does a daily/hourly **“true up”** for accuracy and quality.
 - Preferred when strong **data quality** is needed.
 
 ### 🔁 Kappa Architecture
+
+![Kappa Architecture](img/apache_iceberg_day_2_6.png)
 
 - One unified codebase for both streaming and batch.
 - Handles small files with **compaction** (e.g., Iceberg).
@@ -72,6 +84,8 @@
 - Small files are inefficient: too many I/O operations and too much parallelism.
 
 ### 🧩 Small File Problem
+
+![Small Files Problem](img/apache_iceberg_day_2_7.png)
 
 - Avoid both extremes:
     - ⚠️ One file per row → too much overhead.
@@ -123,6 +137,8 @@ CALL system.rewrite_data_files(table => 'bootcamp.nba_player_seasons')
 ---
 
 ## 🔥 Hot, Warm & Cold Data
+
+![Latency vs Cost](img/apache_iceberg_day_2_8.png)
 
 - **Latency ↔ Cost** trade-off.
 - **Iceberg is not efficient for dashboards**.
