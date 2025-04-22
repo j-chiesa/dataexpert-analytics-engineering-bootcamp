@@ -34,7 +34,7 @@ run_date = args['ds']
 output_table = args['output_table']
 
 # Polygon API call
-api_key = 'Em7xrXc5QX01uQqD29xxTrVZXfrrjC6Q'
+api_key = 'api_key'
 starter_url = f'https://api.polygon.io/v3/reference/tickers?active=true&limit=1000&apiKey={api_key}'
 response = requests.get(starter_url)
 data = response.json()
