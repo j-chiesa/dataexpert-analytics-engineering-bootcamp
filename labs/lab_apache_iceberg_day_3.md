@@ -1,6 +1,8 @@
-# 🧨 Apache Iceberg — Day 3
+# 🧊 Apache Iceberg — Day 3
 
-> This lab demonstrates the full WAP (Write-Audit-Publish) pattern in Apache Iceberg. It walks through writing to the main branch, validating changes through an audit branch, and promoting the audit branch to production using fast-forwarding. It includes automated Glue jobs, schema setup, data quality checks, and safe publishing of data changes.
+> This lab demonstrates the full WAP (Write-Audit-Publish) pattern in Apache Iceberg.
+> It walks through writing to the main branch, validating changes through an audit branch, and promoting the audit branch to production using fast-forwarding.
+> It includes automated Glue jobs, schema setup, data quality checks, and safe publishing of data changes.
 
 ---
 
@@ -234,4 +236,5 @@ true
 
 ---
 
-🧼 Final Step (Optional): Drop the `audit_branch` once data is validated and promoted.
+### 5️⃣ Drop the `audit_branch` once data is validated and promoted.
+Once all data quality checks pass and the changes have been published to the main branch, the audit_branch can be safely dropped to clean up the environment.
