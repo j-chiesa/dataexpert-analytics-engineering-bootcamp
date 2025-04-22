@@ -6,8 +6,6 @@
 
 ## ⚙️ Iceberg Compaction
 
----
-
 ```sql
 CREATE TABLE javierchiesa.test_compaction (col BIGINT, name VARCHAR);
 ```
