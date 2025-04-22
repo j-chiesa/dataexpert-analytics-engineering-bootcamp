@@ -1,4 +1,4 @@
-# 🧊 Apache Iceberg — Lab Day 1
+# 🧊 Apache Iceberg — Lab Day 2
 
 > This lab explores the compaction process in Apache Iceberg and how it affects performance and storage efficiency.
 > It also covers the movement of data between Iceberg and Snowflake, using dynamic tables and Snowpark for integration.
