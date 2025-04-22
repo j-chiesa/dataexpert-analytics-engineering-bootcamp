@@ -4,6 +4,8 @@
 > It also covers the movement of data between Iceberg and Snowflake, using dynamic tables and Snowpark for integration.
 > Finally, a latency comparison highlights when to use Trino, Snowflake, or Spark depending on data volume and performance needs.
 
+---
+
 ## ⚙️ Iceberg Compaction
 
 ```sql
