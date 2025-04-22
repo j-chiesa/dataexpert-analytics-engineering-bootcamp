@@ -37,8 +37,6 @@ FROM javierchiesa."test_compaction$files";
 |-------------|----------------|
 | 3           | 1305           |
 
----
-
 ### ✨ Compaction with AWS Glue + Spark
 
 #### 💪 Spark Glue Job: `iceberg_compaction_example.py`
@@ -86,8 +84,6 @@ create_and_run_glue_job(f'iceberg_compaction_example_{schema}',
 ```
 
 > ℹ️ **Note:** Trino does not support file compaction natively. This is why we use AWS Glue and Spark.
-
----
 
 ### 📊 Post-compaction check
 
