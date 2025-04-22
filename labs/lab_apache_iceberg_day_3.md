@@ -140,11 +140,10 @@ SELECT COUNT(DISTINCT ticker) = COUNT(ticker) AS there_are_no_duplicates
 FROM javierchiesa.branching_stock_tickers FOR VERSION AS OF 'audit_branch';
 ```
 
-```text
-there_are_no_duplicates
-----------------
-false
-```
+**Result:**
+| there_are_no_duplicates |
+|-------------------------|
+| false                   |
 
 #### 🛠️ Clean the Data: Remove Duplicates
 ```python
@@ -198,11 +197,9 @@ FROM checks;
 ```
 
 **Result:**
-```text
-all_checks_pass
-----------------
-true
-```
+| all_checks_pass |
+|-------------------------|
+| true                 |
 
 ---
 
@@ -243,11 +240,9 @@ FROM checks;
 ```
 
 **Result:**
-```text
-all_checks_pass
-----------------
-true
-```
+| all_checks_pass |
+|-------------------------|
+| true                 |
 
 ---
 
