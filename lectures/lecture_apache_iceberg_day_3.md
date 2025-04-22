@@ -28,8 +28,6 @@
 
 ## 🏭 Production Data Patterns
 
----
-
 ### ♻️ WAP Pattern (Write → Audit → Publish)
 
 > A safer approach used by Airbnb, Netflix, Google, and Apple.
