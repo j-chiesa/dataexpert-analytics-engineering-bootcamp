@@ -39,7 +39,7 @@ FROM javierchiesa."test_compaction$files";
 
 ### ✨ Compaction with AWS Glue + Spark
 
-#### 💪 Spark Glue Job: `iceberg_compaction_example.py`
+#### Spark Glue Job: `iceberg_compaction_example.py`
 
 ```python
 import sys
@@ -66,7 +66,7 @@ job = Job(glueContext)
 job.init(args["JOB_NAME"], args)
 ```
 
-#### ⚙️ Glue Job Submission: `glue_job_runner.py`
+#### Glue Job Submission: `glue_job_runner.py`
 
 ```python
 from include.eczachly.aws_secret_manager import get_secret
