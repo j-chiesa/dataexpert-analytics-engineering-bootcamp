@@ -137,10 +137,24 @@ CALL system.rewrite_data_files(table => 'bootcamp.nba_player_seasons')
     **Best for:**
     - **Batch updates** — large, infrequent changes (e.g., cleaning up daily data).
 2. **Merge-on-Read (MoR)**:
-    - Keeps deleted records separately.
-    - Joins base + deletes on read.
-    - 💡 Best for **streaming** updates.
-    - ✅ Fast writes / ❌ Slow reads.
+    - Iceberg **tracks deletes and updates in separate “change” files**.
+    - On read, it **merges** the base data files with these change files to show the up-to-date view.
+
+    **Pros:**
+    - ✅ **Fast writes**: minimal overhead when data is written.
+
+    **Cons:**
+    - ❌ **Slow reads**: must merge base + change files during every query.
+
+    **Best for:**
+    - **Streaming updates** — small, frequent changes (e.g., events arriving every few seconds).
+
+### 🧮 Quick Comparison
+
+| Strategy         | Write Performance | Read Performance | Best Use Case         |
+|------------------|-------------------|------------------|------------------------|
+| Copy-on-Write    | ❌ Slow           | ✅ Fast          | Batch updates (large)  |
+| Merge-on-Read    | ✅ Fast           | ❌ Slow          | Streaming (frequent)   |
 
 ---
 
