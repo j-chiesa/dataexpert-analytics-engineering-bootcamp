@@ -103,6 +103,10 @@ create_and_run_glue_job(f'iceberg_main_{schema}',
 SELECT * FROM javierchiesa."branching_stock_tickers$refs";
 ```
 
+| NAME | TYPE  | SNAPSHOT_ID         | MAX_REFERENCE_AGE_IN_MS | MIN_SNAPSHOTS_TO_KEEP | MAX_SNAPSHOT_AGE_IN_MS |
+|------|-------|---------------------|--------------------------|------------------------|-------------------------|
+| main | BRANCH| 4987149624528344000 | null                     | null                   | null                   |
+
 ---
 
 ### 2️⃣ Writing to the `audit_branch`
@@ -121,6 +125,11 @@ create_and_run_glue_job(f'iceberg_audit_{schema}',
 SELECT * FROM javierchiesa."branching_stock_tickers$refs";
 ```
 
+| NAME         | TYPE   | SNAPSHOT_ID         | MAX_REFERENCE_AGE_IN_MS | MIN_SNAPSHOTS_TO_KEEP | MAX_SNAPSHOT_AGE_IN_MS |
+|--------------|--------|---------------------|--------------------------|------------------------|-------------------------|
+| audit_branch | BRANCH | 8251856541678302000 | null                     | null                   | null                   |
+| main         | BRANCH | 4987149624528344000 | null                     | null                   | null                   |
+
 ---
 
 ### 3️⃣ Audit the Data
@@ -129,6 +138,12 @@ SELECT * FROM javierchiesa."branching_stock_tickers$refs";
 ```sql
 SELECT COUNT(DISTINCT ticker) = COUNT(ticker) AS there_are_no_duplicates
 FROM javierchiesa.branching_stock_tickers FOR VERSION AS OF 'audit_branch';
+```
+
+```text
+there_are_no_duplicates
+----------------
+false
 ```
 
 #### 🛠️ Clean the Data: Remove Duplicates
