@@ -125,7 +125,7 @@ CALL system.rewrite_data_files(table => 'bootcamp.nba_player_seasons')
 ## 🔥 Hot, Warm & Cold Data
 
 - **Latency ↔ Cost** trade-off.
-- **Iceberg is not for real-time dashboards**.
+- **Iceberg is not efficient for dashboards**.
 
 ### 📊 Dashboard Best Practices
 
