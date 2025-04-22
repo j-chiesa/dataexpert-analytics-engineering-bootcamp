@@ -61,9 +61,9 @@
 ![Lambda Architecture](img/apache_iceberg_day_2_5.png)
 
 - Two codebases: one for streaming, one for batch.
-- **Streaming pipeline** creates small files and is fast but less accurate.
+- **Streaming pipeline** creates small files and is fast but less accurate (we can have late arriving data).
 - **Batch pipeline** does a daily/hourly **“true up”** for accuracy and quality.
-- Preferred when strong **data quality** is needed.
+- Batch is used for strong **data quality** checks.
 
 ### 🔁 Kappa Architecture
 
