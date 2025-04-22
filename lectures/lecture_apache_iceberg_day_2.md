@@ -87,7 +87,7 @@
 2. **Manual Compaction** (e.g., in Spark):
 
 ```python
-system.rewrite_data_files(table => 'bootcamp.nba_player_seasons')
+CALL system.rewrite_data_files(table => 'bootcamp.nba_player_seasons')
 ```
 
 ### 🔍 Compaction Settings
