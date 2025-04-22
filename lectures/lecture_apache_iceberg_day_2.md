@@ -19,8 +19,6 @@
 - **Production Database Layer**: Daily snapshots go through ETL and land in the data lake partitioned by date.
 - **Application Layer**: Applications send events to a queue (e.g., Kafka, Scribe). Data is dumped daily into the data lake. For large volumes, hourly partitions are created and later combined into daily ones.
 
----
-
 ### 🔮 Future Analytical Architecture
 
 - **Production Database Layer**: No more daily snapshots. **Change Data Capture (CDC)** sends real-time changes to an event queue, then ingested directly into Iceberg.
@@ -57,8 +55,6 @@
 - **Batch pipeline** does a daily/hourly **“true up”** for accuracy and quality.
 - Preferred when strong **data quality** is needed.
 
----
-
 ### 🔁 Kappa Architecture
 
 - One unified codebase for both streaming and batch.
@@ -92,7 +88,6 @@
 
 ```python
 system.rewrite_data_files(table => 'bootcamp.nba_player_seasons')
-
 ```
 
 ### 🔍 Compaction Settings
