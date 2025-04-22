@@ -91,8 +91,6 @@
 2. **Manual Compaction** (e.g., in Spark):
 
 ```python
-python
-CopyEdit
 system.rewrite_data_files(table => 'bootcamp.nba_player_seasons')
 
 ```
