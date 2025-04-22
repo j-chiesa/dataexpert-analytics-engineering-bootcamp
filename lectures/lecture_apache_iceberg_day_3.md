@@ -42,8 +42,6 @@
 
 ![WAP Pattern](img/apache_iceberg_day_3_1.png)
 
----
-
 ### 🪧 Signal Table Pattern
 
 > Used at Meta. Trades safety for speed.
