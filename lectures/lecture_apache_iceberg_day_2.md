@@ -125,9 +125,17 @@ CALL system.rewrite_data_files(table => 'bootcamp.nba_player_seasons')
 ### 🧠 Two Snapshot Strategies
 
 1. **Copy-on-Write (CoW)**:
-    - Rewrites affected data files.
-    - 💡 Best for **batch** updates.
-    - ✅ Fast reads / ❌ Slow writes.
+    - When a row is updated or deleted, Iceberg **rewrites the entire data file** where that row is located, omitting or updating the necessary records.
+    - Think of it like creating a new clean version of the file without the modified rows.
+
+    **Pros:**
+    - ✅ **Fast reads**: data is already clean and compact.
+  
+    **Cons:**
+    - ❌ **Slow writes**: rewriting entire files is costly.
+
+    **Best for:**
+    - **Batch updates** — large, infrequent changes (e.g., cleaning up daily data).
 2. **Merge-on-Read (MoR)**:
     - Keeps deleted records separately.
     - Joins base + deletes on read.
