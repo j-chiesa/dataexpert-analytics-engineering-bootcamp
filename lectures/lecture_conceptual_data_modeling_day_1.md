@@ -87,5 +87,3 @@
 
 - **Always ask for context** on every column—question *why* it’s needed.
 - Get stakeholders to *rank* their priorities.
-
----
