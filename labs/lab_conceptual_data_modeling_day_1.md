@@ -102,8 +102,6 @@ Discuss with stakeholders to align data engineering effort, parallelization poss
 
 Move from **conceptual** to **logical and physical modeling** based on the structured metric map above.
 
----
-
 ### **Summary Table Example** (for your project):
 
 | Category         | Metric                          | Type      | Data Source         | Ease   | Time Estimate |
@@ -112,7 +110,5 @@ Move from **conceptual** to **logical and physical modeling** based on the struc
 | Financial Health | Income                         | Leading   | Tax return, payroll | Medium | 1 month      |
 | Productivity     | Productive days                | Lagging   | Work calendar       | Easy   | 1 month      |
 | ...              | ...                            | ...       | ...                 | ...    | ...          |
-
----
 
 > **This conceptual data model ensures you start your analytics initiative with clear business value, measurable outcomes, and actionable engineering steps.**
