@@ -27,13 +27,13 @@ This file:
 
 **Highlights:**
 - Uses `GENERATOR` + `SEQ4()` to build full year range
-- `CROSS JOIN` with active span for expected year-actor pairs
-- `FULL OUTER JOIN` to check if any year is missing
-- `ARRAY_AGG` to collect final gaps per actor
+- Uses `JOIN ... ON BETWEEN` instead of CROSS JOIN
+- Replaces `FULL OUTER JOIN` with `LEFT JOIN` to check for missing years
+- Uses `ARRAY_AGG` to collect final gaps per actor
 
 ```sql
 -- CTEs: year_range, year_sequence, actor_min_max_year, actor_year, actor_inactive_years
--- Final SELECT: actor_id, actor, ARRAY_AGG(year_seq IF year IS NULL)
+-- Final SELECT: actor_id, actor, ARRAY_AGG(CASE WHEN year IS NULL THEN year_seq ELSE NULL END)
 ```
 
 ---
@@ -91,15 +91,14 @@ This file:
 ## 🧠 Feedback Summary
 
 ### Strengths
-- ✅ **Efficient use of SQL CTEs and structure**
-- ✅ **Python UDFs correctly implemented**
-- ✅ **Clean logic and handling of edge cases**
-- ✅ **Proper external package usage in UDFs**
+- ✅ **Well-structured SQL and clear modular CTE logic**
+- ✅ **Correct implementation of Python UDFs**
+- ✅ **Proper use of external libraries in Snowflake**
+- ✅ **Result format aligns with problem requirements**
 
 ### Suggestions
-- 🔁 **Add explicit window function** (e.g., LAG) if required for clarity
-- ⚠️ **Avoid overly wide FULL OUTER JOINs** → could get expensive on large datasets
-- 🧩 **Break queries into modular scripts** if reused
+- 🔁 Consider using a **window function (e.g., LAG)** in future iterations for time gap detection.
+- ⚠️ Be cautious with **large-scale JOINs** in bigger datasets—may affect performance.
 
 ---
 
@@ -112,11 +111,11 @@ This file:
 }
 ```
 
-Excellent submission! The work meets all technical goals and shows a strong grasp of both SQL and Snowflake UDFs. Just be mindful of query performance on larger datasets.
+Excellent submission! The revised `LEFT JOIN` implementation improved clarity, and all tasks were addressed correctly.
 
 ---
 
 📁 **Next Step:**
 - Use parameterized inputs to make UDFs more reusable
-- Try integrating these steps into a dbt pipeline or Airflow DAG
-- Practice using `LAG()`/`LEAD()` to spot gaps in time series
+- Explore using `LAG()`/`LEAD()` to spot gaps in sequential data
+- Test your UDF performance on larger datasets
