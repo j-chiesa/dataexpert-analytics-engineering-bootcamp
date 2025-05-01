@@ -62,7 +62,7 @@ This Glue job:
 | Branching (WAP audit)                       | ✅ Done     | Implemented via Glue job and CLI args                            |
 | Stock data from Polygon API                 | ✅ Done     | Validated against real API responses                             |
 | Upload script to DataExpert                 | ✅ Done     | `stock_prices.py` zipped and uploaded                           |
-| Fast-forward logic                          | ✅ Bonus ✅ | Job handles fast-forward from `audit_branch` to `main`           |
+| Fast-forward logic                          | ✅ Done     | Job handles fast-forward from `audit_branch` to `main`           |
 
 ---
 
