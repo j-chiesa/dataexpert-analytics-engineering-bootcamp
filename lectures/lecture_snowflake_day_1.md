@@ -74,8 +74,6 @@ But also **different**:
 - Machine Learning datasets  
 - Historical time travel + schema evolution use cases  
 
----
-
 ### Interoperability: Query Iceberg from Snowflake
 
 You can access Iceberg tables from within Snowflake by setting up:
@@ -97,6 +95,8 @@ You can access Iceberg tables from within Snowflake by setting up:
 
 ### Query Pruning
 
+![Query Pruning](img/snowflake_day_1_1.png)
+
 > Pruning = Skipping irrelevant micro-partitions during query.
 
 - Each micro-partition stores metadata (min/max values)  
@@ -107,6 +107,7 @@ You can access Iceberg tables from within Snowflake by setting up:
 - **Bad**: Booleans, high-cardinality (e.g. nanosecond timestamps)
 
 ### Partitioning in Iceberg
+![Iceberg Partitioning](img/snowflake_day_1_2.png)
 
 > Iceberg gives **more manual control** than Snowflake:
 
