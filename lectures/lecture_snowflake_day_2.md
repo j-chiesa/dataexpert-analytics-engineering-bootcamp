@@ -1,4 +1,4 @@
-# ❄️ Snowflake - Day 2
+# ❄️ Snowflake — Day 2
 
 > This lecture explains how complex data types are modeled in Iceberg and Snowflake, how to choose between them based on structure and compression, and how to implement external functions and API access safely.
 
