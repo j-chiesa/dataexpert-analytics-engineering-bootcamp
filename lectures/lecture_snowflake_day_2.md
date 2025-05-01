@@ -124,6 +124,25 @@ EXTERNAL_ACCESS_INTEGRATIONS = (openai_integration)
 SECRETS = ('api_key' = openai_api_key)
 AS
 $$
-# -- HERE GOES PYTHON CODE
+def openai_udf(system_prompt, user_prompt):
+    messages = [
+        {
+            "role": "system",
+            "content": system_prompt
+        },
+        {
+            "role": "user",
+            "content": user_prompt
+        }
+    ]
+
+    response = client.chat.completions.create(
+        model="gpt-4o-mini"
+        messages=messages,
+        temperature=0.1
+    )
+
+    assistant_reply = response.choices[0].message.content
+    return assistant_reply
 $$;
 ```
