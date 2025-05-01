@@ -5,10 +5,7 @@
 ---
 
 ## 🧠 UDFs (User Defined Functions)
-
-<aside>
-🏀 **Goal**: Number of players who had 5+ consecutive seasons scoring >20 pts per game.
-</aside>
+> 🏀 **Goal**: Number of players who had 5+ consecutive seasons scoring > 20 pts per game.
 
 ### Declarative Programming
 ```sql
