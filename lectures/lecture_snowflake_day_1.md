@@ -1,4 +1,4 @@
-# ❄️ Snowflake - Day 1
+# ❄️ Snowflake — Day 1
 
 > This lecture explains **when and why to use Snowpark**, compares **Snowflake vs Iceberg** for data storage, and provides best practices on **clustering** and **cost management** in Snowflake.
 
