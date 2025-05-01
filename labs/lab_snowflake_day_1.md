@@ -99,13 +99,13 @@ import snowflake.connector
 from snowflake.snowpark import Session
 
 connection_params = {
-    "account": 'aab46027',
-    "user": 'dataexpert_student',
-    "password": 'DataExpert123!',
-    "role": "all_users_role",
-    'warehouse': 'COMPUTE_WH',
-    'database': 'dataexpert_student'
-}
+    "account": 'account',
+    "user": 'user',
+    "password": 'password',
+    "role": "role",
+    'warehouse': 'warehouse',
+    'database': 'database'
+} # Replace with real values.
 
 def get_snowpark_session(schema='bootcamp'):
     connection_params['schema'] = schema
