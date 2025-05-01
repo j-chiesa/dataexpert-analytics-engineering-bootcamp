@@ -95,3 +95,35 @@ CREATE OR REPLACE NETWORK RULE openai_api_access
 MODE = EGRESS
 TYPE = HOST_PORT
 VALUE_LIST = ('api.openai.com');
+```
+
+2. **Create a secret**
+```sql
+CREATE OR REPLACE SECRET openai_api_key
+	TYPE = GENERIC_STRING
+	SECRET_STRING = 'super-secret-key-shhhh'
+```
+
+3. **Create an external access integration**
+```sql
+CREATE OR REPLACE EXTERNAL ACCESS INTEGRATION openai_integration
+ALLOWED_NETWORK_RULES = (openai_api_access)
+ALLOWED_AUTHENTICATION_SECRETS = (openai_api_key)
+ENABLED = TRUE;
+```
+
+4. **Create your function**
+```sql
+CREATE OR REPLACE FUNCTION openai_completion(system_prompt VARCHAR, user_prompt VARCHAR)
+RETURNS STRING
+LANGUAGE PYTHON
+RUNTIME_VERSION = '3.8'
+HANDLER = 'openai_udf'
+PACKAGES = ('openai')
+EXTERNAL_ACCESS_INTEGRATIONS = (openai_integration)
+SECRETS = ('api_key' = openai_api_key)
+AS
+$$
+# -- HERE GOES PYTHON CODE
+$$;
+```
