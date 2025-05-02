@@ -1,6 +1,8 @@
 # Dutch Railway Efficiency and Reliability
 
-## 🚆 Purpose of the Project
+![Capstone Cover](img/capstone_cover.png)
+
+## Purpose of the Project
 
 The **Dutch Railway Efficiency and Reliability** project aims to design and implement a robust data architecture and automated evaluation system focused exclusively on assessing the **operational performance** of the Dutch railway network.
 
@@ -19,7 +21,7 @@ This framework promotes transparency and early detection of risks that could aff
 
 ---
 
-## 📊 Expected Outputs
+## Expected Outputs
 
 * **Modular data architecture**: scalable and maintainable ingestion and processing system.
 * **Automated batch processing**: daily updates of key operational KPIs.
@@ -29,12 +31,13 @@ This framework promotes transparency and early detection of risks that could aff
 
 ---
 
-## 🧠 Conceptual Data Modeling
+## Conceptual Data Modeling
 
+[![](https://mermaid.ink/img/pako:eNqtVstu2kAU_ZXRrAiCyLwCeEchlaI-giDKonUWE_saRrFn3PGYQCjf0E33Ubtr1v2ifkE_odc2xiQxECm1Nx77nHvPfc14SW3pADVptVq1hC2FyyemJQjRU_DhkinOrj0Ik1eEuFLoMb8Dk9RawXwDM4kCJ5pXbelJZYnElM-F47Mg5SkpdalULg8ibU_JiHHvli3Iqetym4OwF4QJh4zAQ2fc43pRLh8dWcLS6U1SI_G1XJbLT2jDSNg6Yilttcqx8VUaAQ-5cKXymeZAesMz8vf-_ufRY1h8fd4yhBI1kD_fHq4KcAMImNKRAjIAj-3H9pTiM-a9APnU6gX3Y-yvw1b3Ic9FNfmcW9-nIUNn9vfrTXwrwBLscL6d0CJgXMw-EzZ4HhZHijCp54CHKgqS9evq-THyr0ER6ZK1E3BQBg_CXSEVEcZaFhJKWzJfqGKbcVDBWK9T0nNdsDU4hylpbIfwvRkoNoEtNeQ9MCfrokOJQUnwJcLhg6dBxNV8q9KP6WT2WcDsV49l7lzvK17uOkC0VoyLXX15kXzM1BUVt_9mHOv5UaRnw9OSDGUQpb2LEybC9c7B5WGRxeSeAhaSM-HAvCC7655IcnuOUbL_MCRDVBADSX_KBLZFrnDvtpbMNZmFBPlCYLddwpTbHuwsT5rzLM64RFk0Bek_v6zaUx7cMNyzyIBphvK__y4shpK3DjbwDDzcPXQ-Ns93mqHCU0NM0s6UoX554grbIDYHSSBDFoaAuVPJ6h33pA8an553XwmzIEKPi5s8KvKVnI6GWYDJcbcJDlUe8PBwtTEekx_nBunVVKbaNCWt0IniDjW1iqBCfcBQ4yVdxlItmpznFjXxcftMp5ZYITVg4pOUfsZWMppMqekyL8RVFDjYMgPOJorlENz2QfVlJDQ160ZigppLOqdmrdM6NrpGrVE7Mepto9mp0AW-7XaOjYZRrxnNeqNT77Rbqwq9S5wax92m0W01Oi2j3TyptZrtCgWHa6k-pP8wya_M6h-6cb1J?type=png)](https://mermaid.live/edit#pako:eNqtVstu2kAU_ZXRrAiCyLwCeEchlaI-giDKonUWE_saRrFn3PGYQCjf0E33Ubtr1v2ifkE_odc2xiQxECm1Nx77nHvPfc14SW3pADVptVq1hC2FyyemJQjRU_DhkinOrj0Ik1eEuFLoMb8Dk9RawXwDM4kCJ5pXbelJZYnElM-F47Mg5SkpdalULg8ibU_JiHHvli3Iqetym4OwF4QJh4zAQ2fc43pRLh8dWcLS6U1SI_G1XJbLT2jDSNg6Yilttcqx8VUaAQ-5cKXymeZAesMz8vf-_ufRY1h8fd4yhBI1kD_fHq4KcAMImNKRAjIAj-3H9pTiM-a9APnU6gX3Y-yvw1b3Ic9FNfmcW9-nIUNn9vfrTXwrwBLscL6d0CJgXMw-EzZ4HhZHijCp54CHKgqS9evq-THyr0ER6ZK1E3BQBg_CXSEVEcZaFhJKWzJfqGKbcVDBWK9T0nNdsDU4hylpbIfwvRkoNoEtNeQ9MCfrokOJQUnwJcLhg6dBxNV8q9KP6WT2WcDsV49l7lzvK17uOkC0VoyLXX15kXzM1BUVt_9mHOv5UaRnw9OSDGUQpb2LEybC9c7B5WGRxeSeAhaSM-HAvCC7655IcnuOUbL_MCRDVBADSX_KBLZFrnDvtpbMNZmFBPlCYLddwpTbHuwsT5rzLM64RFk0Bek_v6zaUx7cMNyzyIBphvK__y4shpK3DjbwDDzcPXQ-Ns93mqHCU0NM0s6UoX554grbIDYHSSBDFoaAuVPJ6h33pA8an553XwmzIEKPi5s8KvKVnI6GWYDJcbcJDlUe8PBwtTEekx_nBunVVKbaNCWt0IniDjW1iqBCfcBQ4yVdxlItmpznFjXxcftMp5ZYITVg4pOUfsZWMppMqekyL8RVFDjYMgPOJorlENz2QfVlJDQ160ZigppLOqdmrdM6NrpGrVE7Mepto9mp0AW-7XaOjYZRrxnNeqNT77Rbqwq9S5wax92m0W01Oi2j3TyptZrtCgWHa6k-pP8wya_M6h-6cb1J)
 
 ---
 
-## 🗺️ Project Scope
+## Project Scope
 
 ### ✅ In Scope
 
@@ -55,7 +58,7 @@ Focus: internal operations vs. planned schedules
 
 ---
 
-## 📚 Datasets
+## Datasets
 
 ### Journey Details – Reisinformatie API
 
@@ -96,7 +99,7 @@ Structured event data on service disruptions:
 
 ---
 
-## 🛠️ Tools
+## Tools
 
 ### S3
 
