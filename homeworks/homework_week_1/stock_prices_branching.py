@@ -126,7 +126,7 @@ def main():
         col("t"),
         col("n"),
         col("date")
-    )
+    ).dropDuplicates(["ticker", "date"])
 
     df.printSchema()
 
