@@ -2,7 +2,7 @@
 
 ![Capstone Cover](img/ns_logo.png)
 
-<img src="ns_logo.png" alt="NS logo" width="300">
+<img src="img/ns_logo.png" alt="NS logo" width="300">
 
 ## Purpose of the Project
 
