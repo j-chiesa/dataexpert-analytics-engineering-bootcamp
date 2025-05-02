@@ -128,13 +128,34 @@ def main():
         col("date")
     ).dropDuplicates(["ticker", "date"])
 
-    df.printSchema()
-
     # Write data to Iceberg table, partitioned by date
     df.writeTo(output_table).using("iceberg").partitionedBy("date").overwritePartitions()
 
-    # If not running in a branch, clean up the audit branch if it exists
-    if not branch_name:
+    # If writing to a branch, validate data by checking for duplicates.
+    # If not in a branch (i.e., publishing to main), clean up the audit branch if it exists.
+    if branch_name:
+        audit_result = spark.sql(
+            """
+            WITH check_duplicates AS (
+                SELECT
+                    ticker,
+                    date,
+                    COUNT(1) AS c
+                FROM javierchiesa.maang_stock_prices
+                GROUP BY ticker, date
+            )
+            SELECT COUNT(1) = SUM(c) AS there_are_no_duplicates
+            FROM check_duplicates
+            """
+        )
+
+        no_duplicates = audit_result.collect()[0]["there_are_no_duplicates"]
+
+        if no_duplicates:
+            print("✅ No duplicates found — safe to publish.")
+        else:
+            print("❌ Duplicates detected — do not publish.")
+    else:
         spark.catalog.refreshTable("javierchiesa.maang_stock_prices")
         spark.sql("ALTER TABLE javierchiesa.maang_stock_prices DROP BRANCH audit_branch")
 
