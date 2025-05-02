@@ -1,8 +1,14 @@
 # Dutch Railway Efficiency and Reliability
 
-<img src="img/ns_logo.png" alt="NS logo" width="300">
+<br>
+<br>
 
-<img src="img/capstone_cover.png" alt="NS logo" width="500">
+<p align="center">
+  <img src="img/ns_logo.png" alt="NS logo" width="300">
+</p>
+
+<br>
+<br>
 
 ## Purpose of the Project
 
@@ -103,38 +109,12 @@ Structured event data on service disruptions:
 
 ## Tools
 
-### S3
-
-* Raw and cleansed data storage, organized by date/type.
-
-### Iceberg
-
-* Versioned and partitioned table format for raw and production layers.
-* Enables *time travel* and safe publishing with fast-forwarding.
-
-### Airflow
-
-* Orchestrates ingestion from APIs and triggers transformations.
-* DAGs manage dependencies, retries, and scheduling.
-
-### dbt
-
-* Transforms raw data into dimensional models in Snowflake.
-* Adds version control, testing, and lineage tracking.
-
-### Snowflake
-
-* Cleaned and production-ready data warehouse.
-* Optimized for dashboarding and BI.
-
-### PyIceberg
-
-* Programmatic Iceberg schema and table management.
-* Integrated with Airflow for modular pipelines.
-
-### Spark
-
-* Fast-forwarding from audit branches to production in Iceberg.
-* Ensures validated and clean data transitions.
-
----
+| **Tool**     | **Usage in the Project**                                                                                                                  |
+|--------------|-------------------------------------------------------------------------------------------------------------------------------------------|
+| **S3**       | Stores raw and cleansed data from NS APIs, structured by date and data type. Serves as the staging layer before processing.              |
+| **Iceberg**  | Manages partitioned and versioned tables in both raw and production layers. Supports time travel and safe publishing using fast-forwarding. |
+| **Airflow**  | Coordinates the data pipeline: fetches data from APIs, stores it in S3, and triggers transformations. Manages retries and dependencies.   |
+| **dbt**      | Cleans and transforms raw data into dimensional models in Snowflake. Adds testing, documentation, and lineage.                            |
+| **Snowflake**| Hosts the cleansed and production-ready data. Provides scalable, performant storage for analytics and dashboarding.                       |
+| **PyIceberg**| Defines Iceberg schemas and tables programmatically. Integrated into Airflow for automation and modular schema/table management.           |
+| **Spark**    | Handles fast-forwarding of data from Iceberg audit branches to production. Publishes only validated data to the final layer.              |
