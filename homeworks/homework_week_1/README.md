@@ -46,6 +46,20 @@ This Glue job:
 - Uses `ARRAY_AGG`, `OBJECT_CONSTRUCT`, and PySpark `.writeTo()`
 - Supports writing to branches (optional `--branch` arg)
 - Contains cleanup logic for audit branches if unused
+- Performs data validation to check for duplicates using Spark SQL:
+
+```sql
+WITH check_duplicates AS (
+    SELECT
+        ticker,
+        date,
+        COUNT(1) AS c
+    FROM javierchiesa.maang_stock_prices
+    GROUP BY ticker, date
+)
+SELECT COUNT(1) = SUM(c) AS there_are_no_duplicates
+FROM check_duplicates
+```
 
 ```python
 # Functions: fetch_stock_data(), main()
@@ -56,13 +70,14 @@ This Glue job:
 
 ## 🧪 Features Implemented
 
-| Feature                                      | Status     | Notes                                                            |
-|---------------------------------------------|------------|------------------------------------------------------------------|
-| Daily-partitioned Iceberg table             | ✅ Done     | Uses `PartitionSpec` on `date`                                   |
-| Branching (WAP audit)                       | ✅ Done     | Implemented via Glue job and CLI args                            |
-| Stock data from Polygon API                 | ✅ Done     | Validated against real API responses                             |
-| Upload script to DataExpert                 | ✅ Done     | `stock_prices.py` zipped and uploaded                           |
-| Fast-forward logic                          | ✅ Done     | Job handles fast-forward from `audit_branch` to `main`           |
+| Feature                         | Status | Notes                                                        |
+| ------------------------------- | ------ | ------------------------------------------------------------ |
+| Daily-partitioned Iceberg table | ✅ Done | Uses `PartitionSpec` on `date`                               |
+| Branching (WAP audit)           | ✅ Done | Implemented via Glue job and CLI args                        |
+| Stock data from Polygon API     | ✅ Done | Validated against real API responses                         |
+| Upload script to DataExpert     | ✅ Done | `stock_prices.py` zipped and uploaded                        |
+| Fast-forward logic              | ✅ Done | Job handles fast-forward from `audit_branch` to `main`       |
+| Data validation with SQL        | ✅ Done | Verified absence of duplicates per `ticker + date` using SQL |
 
 ---
 
