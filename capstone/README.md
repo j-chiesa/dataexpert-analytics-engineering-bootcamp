@@ -2,6 +2,8 @@
 
 ![Capstone Cover](img/ns_logo.png)
 
+<img src="ns_logo.png" alt="NS logo" width="300">
+
 ## Purpose of the Project
 
 The **Dutch Railway Efficiency and Reliability** project aims to design and implement a robust data architecture and automated evaluation system focused exclusively on assessing the **operational performance** of the Dutch railway network.
