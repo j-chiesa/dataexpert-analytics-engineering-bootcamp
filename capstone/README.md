@@ -1,6 +1,6 @@
 # Dutch Railway Efficiency and Reliability
 
-![Capstone Cover](img/capstone_cover.png)
+![Capstone Cover](img/ns_logo.png)
 
 ## Purpose of the Project
 
@@ -33,7 +33,7 @@ This framework promotes transparency and early detection of risks that could aff
 
 ## Conceptual Data Modeling
 
-![Conceptual Data Model](img/capstone_conceptual_data_model.svg)
+![Conceptual Data Model](img/capstone_conceptual_data_model.png)
 
 ---
 
