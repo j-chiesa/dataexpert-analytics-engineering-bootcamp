@@ -1,9 +1,10 @@
 # Dutch Railway Efficiency and Reliability
 
 <br>
+<br>
 
 <p align="center">
-  <img src="img/ns_cover.png" alt="NS logo" width="800">
+  <img src="img/ns_logo.png" alt="NS logo" width="300">
 </p>
 
 <br>
