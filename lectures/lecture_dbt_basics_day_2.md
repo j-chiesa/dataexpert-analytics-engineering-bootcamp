@@ -12,12 +12,27 @@
 - Confirm that the data meets certain expectations or business rules.
 - Types:
   - **Generic**: reusable, written with Jinja.
-
-    ![Generic Test](./data_test_generic.png)
+  ```sql
+  {% test not_null(model, column_name) %}
+  
+      select *
+      from {{ model }}
+      where {{ column_name }} is null
+  
+  {% endtest %}
+  ```
 
   - **Singular**: specific to a single model.
-
-    ![Singular Test](./data_test_singular.png)
+  ```sql
+  -- Refunds have a negative amount, so the total amount should always be >= 0.
+  -- Therefore, return records where this isn't true to make the test fail
+  select
+      order_id,
+      sum(amount) as total_amount
+  from {{ ref('fct_payments') }}
+  group by 1
+  having not(total_amount >= 0)
+  ```
 
 - dbt comes with four built-in generic tests:
   - `not_null`
@@ -28,8 +43,6 @@
 - Many more are available through packages like `dbt_utils` and `dbt_expectations`.
 - You can adjust test severity (`warn` or `error`) and log failed records to your database for debugging.
 
----
-
 ### Unit Tests
 
 - Test your **SQL logic**, not real production data.
@@ -37,12 +50,34 @@
 - Run **before** the model is created.
 - Great for development and CI/CD pipelines.
 
-![Unit Test Example](./unit_test_Example.png)
-
 - Supports inputs as:
   - Dictionaries
   - CSVs
   - SQL (via `SELECT ... UNION ALL`)
+ 
+```yaml
+unit_tests:
+  - name: test_is_valid_email_address
+    description: "Check my is_valid_email_address logic captures all known edge cases - emails with valid and invalid domains"
+    model: dim_customers
+    given:
+      - input: ref('stg_customers')
+        rows:
+          - {email: cool@example.com, email_top_level_domain: example.com}
+          - {email: cool@unknown.com, email_top_level_domain: unknown.com}
+          - {email: badgmail.com, email_top_level_domain: gmail.com}
+          - {email: missingdot@gmailcom, email_top_level_domain: gmail.com}
+      - input: ref('top_level_email_domains')
+        rows:
+          - {tld: example.com}
+          - {tld: gmail.com}
+    expect:
+      rows:
+        - {email: cool@example.com, is_valid_email_address: true}
+        - {email: cool@unknown.com, is_valid_email_address: false}
+        - {email: badgmail.com, is_valid_email_address: false}
+        - {email: missingdot@gmailcom, is_valid_email_address: false}
+```
 
 ---
 
@@ -52,18 +87,16 @@
 
 | Type     | Typical Use Cases                                 |
 |----------|---------------------------------------------------|
-| Generic  | `unique`, `not_null`, `accepted_values`, ranges   |
+| Generic  | `unique`, `not_null`, `accepted_values`, sets and ranges, table shape (row count)   |
 | Singular | Business-specific logic                           |
 
 ### Unit Tests
-
-| Recommended For                    |
-|-----------------------------------|
-| Complex joins or filters          |
-| Regex functions                   |
-| Incremental models                |
-| Window functions                  |
-| Business logic validation         |
+                   
+- Complex joins or filters         
+- Regex functions                   
+- Incremental models                
+- Window functions                 
+- Business logic validation         
 
 ---
 
@@ -78,22 +111,39 @@
 - Store historical versions when data changes.
 - Run using `dbt snapshot`.
 
----
-
 ### Snapshot Strategies
 
 #### 🕒 Timestamp
 
 - Requires an `updated_at` column.
 - Tracks changes by comparing timestamps.
-
-![Snapshot Timestamp](./snapshots_timestamp.png)
+```yaml
+snapshots:
+  - name: orders_snapshot
+    relation: source('jaffle_shop', 'orders')
+    config:
+      schema: snapshots
+      database: analytics
+      unique_key: id
+      strategy: timestamp
+      updated_at: updated_at
+```
 
 #### ✅ Check
 
 - Compares specified columns (`check_cols`) to detect changes.
-
-![Snapshot Check](./snapshots_check.png)
+```yaml
+snapshots:
+  - name: orders_snapshot_check
+    relation: source('jaffle_shop', 'orders')
+    config:
+      schema: snapshots
+      unique_key: id
+      strategy: check
+      check_cols:
+        - status
+        - is_cancelled
+```
 
 ---
 
