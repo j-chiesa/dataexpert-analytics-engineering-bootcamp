@@ -79,6 +79,8 @@ unit_tests:
         - {email: missingdot@gmailcom, is_valid_email_address: false}
 ```
 
+![dbt tests](img/dbt_basics_day_2_1.png)
+
 ---
 
 ## 🏆 dbt Test Best Practices
@@ -96,7 +98,9 @@ unit_tests:
 - Regex functions                   
 - Incremental models                
 - Window functions                 
-- Business logic validation         
+- Business logic validation
+
+![dbt pipeline tests example](img/dbt_basics_day_2_2.png)  
 
 ---
 
@@ -144,6 +148,8 @@ snapshots:
         - status
         - is_cancelled
 ```
+
+![dbt project](img/dbt_basics_day_2_3.png)
 
 ---
 
