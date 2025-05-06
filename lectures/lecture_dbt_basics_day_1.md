@@ -182,9 +182,9 @@ create view dbt_schema.customers as (
 
 ### Naming Conventions
 
-* **staging**: 1:1 source mapping, light transforms
-* **intermediate**: modular logic
-* **marts**: business logic, facts/dims
+* **staging**: 1:1 source mapping, light transforms, `stg_[source]_[entity]s.sql`
+* **intermediate**: modular logic, break down complexity, group by area of concern, `int_[entity]s_[verb]s.sql`
+* **marts**: business identified entities, facts/dims, gorup by area of concern
 
 ### SQL Organization
 
@@ -196,17 +196,19 @@ create view dbt_schema.customers as (
 
 ## 📰 Sources
 
+* References to databases, schemas, and tables in your DW that were not build by dbt.
 * External data defined in YAML
 * Not created by dbt
 * Often raw data
 * Defined with names for reusability
+* It is a good practice to have one source file per source system (Stripe, jaffle_shop, etc.)
 
 
 ### Benefits
 
-* Centralized definition
-* Lineage-aware
-* Supports freshness checks
+* Reusability
+* Maintainability and Consistency
+* Lineage
 
 ---
 
